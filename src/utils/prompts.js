@@ -204,6 +204,7 @@ Never invent company names.
 
 If the startup information is random, meaningless, incomplete, too short, or insufficient for reliable analysis:
 
+
 Return ONLY this JSON object:
 
 {
@@ -254,7 +255,34 @@ RETURN EXACTLY THIS JSON
     }
   ]
 }
+===========================================================
+JSON RULES (STRICT)
+===========================================================
 
+Return ONLY a valid JSON object.
+
+Every property name must use double quotes.
+
+Every string value must use double quotes.
+
+Do NOT include trailing commas.
+
+Do NOT include comments.
+
+Do NOT include markdown.
+
+Do NOT include \`\`\`json.
+
+Do NOT include any explanation.
+
+The response must be directly parseable using JSON.parse().
+
+If you are unable to comply, return ONLY:
+
+{
+  "status": "invalid",
+  "reason": "JSON generation failed."
+}
 ===========================================================
 INPUT VALIDATION (VERY IMPORTANT)
 ===========================================================

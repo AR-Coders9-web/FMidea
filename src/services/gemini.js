@@ -55,29 +55,47 @@ export async function analyzeStartup(formData, tavilyData) {
       .replace(/```/g, "")
       .trim();
 
-    // Extract JSON safely
-    const start = text.indexOf("{");
-    const end = text.lastIndexOf("}");
+  // Remove markdown
+text = text
+  .replace(/```json/gi, "")
+  .replace(/```/g, "")
+  .trim();
 
-    if (start === -1 || end === -1) {
-      throw new Error("Gemini did not return valid JSON.");
-    }
+// Extract JSON
+const start = text.indexOf("{");
+const end = text.lastIndexOf("}");
 
-    const jsonString = text.slice(start, end + 1);
+if (start === -1 || end === -1) {
+  console.error("Gemini Response:", text);
+  throw new Error("Gemini did not return JSON.");
+}
 
-    let report;
+let jsonString = text.substring(start, end + 1);
+
+// Clean common Gemini JSON mistakes
+jsonString = jsonString
+  .replace(/,\s*}/g, "}")
+  .replace(/,\s*]/g, "]")
+  .replace(/\u0000/g, "")
+  .trim();
+
+let report;
 
 try {
   report = JSON.parse(jsonString);
-} catch (e) {
-  console.log("INVALID JSON RECEIVED:");
-  console.log(jsonString);
+} catch (err) {
+  console.error("====== RAW GEMINI ======");
+  console.error(text);
+
+  console.error("====== JSON STRING ======");
+  console.error(jsonString);
+
+  console.error(err);
 
   throw new Error(
-    "Gemini returned invalid JSON. Please try again."
+    "AI returned an unexpected response. Please try again."
   );
 }
-
 if (report?.status === "invalid") {
   throw new Error(
     report.reason ||
