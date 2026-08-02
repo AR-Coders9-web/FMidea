@@ -66,72 +66,121 @@ const PREFILL_SUGGESTIONS = [
 // ==========================================
 const FORM_STEPS = [
   {
-    id: 1, title: "Core Identity", icon: <Globe />,
+    id: 1,
+    title: "Startup Basics",
+    icon: <Globe />,
     fields: [
-      { name: 'startupName', label: 'Startup Name', type: 'text', required: true, half: true },
-      { name: 'tagline', label: 'Tagline (e.g. Just Do It)', type: 'text', half: true },
-      { name: 'pitch', label: 'One-line Pitch', type: 'textarea', required: true, max: 150 },
-      { name: 'country', label: 'Country HQ', type: 'text', half: true },
-      { name: 'industry', label: 'Industry', type: 'select', options: ['SaaS', 'Healthcare', 'FinTech', 'EdTech', 'AgriTech', 'Cyber Security', 'Marketplace', 'Robotics', 'Web3', 'Other'], half: true },
-      { name: 'stage', label: 'Current Stage', type: 'select', options: ['Idea', 'Prototyping', 'MVP', 'Seed', 'Series A+'], half: true },
-      { name: 'website', label: 'Website URL (Optional)', type: 'url', half: true }
-    ]
+      {
+        name: "startupName",
+        label: "Startup Name",
+        type: "text",
+        required: true,
+        half: true,
+      },
+      {
+        name: "industry",
+        label: "Industry",
+        type: "select",
+        options: [
+          "AI",
+          "SaaS",
+          "Healthcare",
+          "FinTech",
+          "EdTech",
+          "Marketplace",
+          "Other",
+        ],
+        half: true,
+      },
+      {
+        name: "pitch",
+        label: "One-line Pitch",
+        type: "textarea",
+        required: true,
+        max: 150,
+      },
+      {
+        name: "stage",
+        label: "Current Stage",
+        type: "select",
+        options: ["Idea", "MVP", "Growth"],
+        half: true,
+      },
+    ],
   },
+
   {
-    id: 2, title: "Problem & Solution", icon: <Lightbulb />,
+    id: 2,
+    title: "Problem",
+    icon: <Lightbulb />,
     fields: [
-      { name: 'problemStatement', label: 'Problem Statement', type: 'textarea', required: false },
-      { name: 'currentSolutions', label: 'Current Solutions', type: 'textarea' },
-      { name: 'innovationLevel', label: 'Innovation Level', type: 'select', options: ['Incremental', 'Architectural', 'Disruptive', 'Radical'] }
-    ]
+      {
+        name: "problemStatement",
+        label: "Problem Statement",
+        type: "textarea",
+      },
+      {
+        name: "targetAudience",
+        label: "Target Audience",
+        type: "textarea",
+      },
+      {
+        name: "businessModel",
+        label: "Business Model",
+        type: "select",
+        options: ["B2B", "B2C", "Marketplace", "B2B2C"],
+      },
+    ],
   },
+
   {
-    id: 3, title: "Target Audience", icon: <Users />,
+    id: 3,
+    title: "Technology",
+    icon: <Cpu />,
     fields: [
-      { name: 'targetAudience', label: 'Target Audience Overview', type: 'textarea', required: false },
-      { name: 'idealCustomer', label: 'Ideal Customer Persona (ICP)', type: 'textarea' },
-      { name: 'ageGroup', label: 'Primary Age Group', type: 'text', half: true },
-      { name: 'geography', label: 'Target Geography', type: 'text', half: true },
-      { name: 'painPoints', label: 'Core Customer Pain Points', type: 'textarea' },
-      { name: 'buyingPower', label: 'Customer Buying Power', type: 'select', options: ['Low', 'Medium', 'High', 'Enterprise'], half: true },
-      
-    ]
+      {
+        name: "techStack",
+        label: "Tech Stack",
+        type: "text",
+        half: true,
+      },
+      {
+        name: "aiUsage",
+        label: "How are you using AI?",
+        type: "textarea",
+      },
+      {
+        name: "competitors",
+        label: "Top Competitors (Optional)",
+        type: "text",
+      },
+    ],
   },
+
   {
-    id: 4, title: "Business & Market", icon: <TrendingUp />,
+    id: 4,
+    title: "Goals",
+    icon: <Rocket />,
     fields: [
-      { name: 'businessModel', label: 'Business Model', type: 'select', options: ['B2B', 'B2C', 'B2B2C', 'C2C', 'Marketplace'], required: true },
-      { name: 'revenueModel', label: 'Revenue Model', type: 'select', options: ['Subscription', 'Freemium', 'Transaction Fee', 'Licensing', 'Ad-based', 'One-time purchase'], required: true },
-      { name: 'pricingStrategy', label: 'Pricing Strategy', type: 'textarea', half: true },
-      { name: 'customerAcquisition', label: 'Customer Acquisition Cost (Est)', type: 'text', half: true },
-      { name: 'marketingChannels', label: 'Primary Marketing Channels', type: 'text', half: true },
-      { name: 'competitors', label: 'Top 3 Competitors', type: 'textarea', half: true },
-      { name: 'expectedUsers', label: 'Expected Users (Year 1)', type: 'text', half: true }
-    ]
+      {
+        name: "revenueModel",
+        label: "Revenue Model",
+        type: "select",
+        options: [
+          "Subscription",
+          "Freemium",
+          "Ads",
+          "Marketplace",
+          "One-time",
+        ],
+      },
+      {
+        name: "specificQuestions",
+        label: "What do you want AI to analyze?",
+        type: "textarea",
+      },
+    ],
   },
-  {
-    id: 5, title: "Technology Stack", icon: <Cpu />,
-    fields: [
-      { name: 'techStack', label: 'Core Tech Stack', type: 'text', half: true },
-      { name: 'aiUsage', label: 'How are you using AI?', type: 'textarea',  half: true },
-      { name: 'patentIdea', label: 'Is this patentable?', type: 'select', options: ['Yes', 'No', 'Unsure'], half: true },
-      { name: 'uniqueAlgorithm', label: 'Unique Algorithm/IP', type: 'text', half: true },
-      { name: 'dataSource', label: 'Data Sources (for AI)', type: 'textarea', half: true },
-      { name: 'securityConcerns', label: 'Security & Privacy Approach', type: 'textarea', half: true },
-      { name: 'scalabilityPlan', label: 'Scalability Plan', type: 'textarea', half: true }
-    ]
-  },
-  {
-    id: 6, title: "Execution & Launch", icon: <Rocket />,
-    fields: [
-      { name: 'fundingStage', label: 'Funding Required', type: 'text', half: true },
-      { name: 'budget', label: 'Current Budget', type: 'text', half: true },
-      { name: 'launchTimeline', label: 'Launch Timeline', type: 'select', options: ['< 3 Months', '3-6 Months', '6-12 Months', '12+ Months'], half: true },
-      { name: 'teamSize', label: 'Team Size', type: 'number', half: true },
-      { name: 'additionalNotes', label: 'Additional Context', type: 'textarea', half: true },
-      { name: 'specificQuestions', label: 'Specific Questions for AI', type: 'textarea', half: true }
-    ]
-  }
 ];
 
 // ==========================================
