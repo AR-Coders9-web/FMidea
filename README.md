@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/logo.png" width="140"/>
+<img src="home.png" width="800"/>
 
 # 🚀 FMIdea
 
